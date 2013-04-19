@@ -1,0 +1,8 @@
+geometry_msgs/PoseStamped valve
+float32 radius
+string id
+float32 rms_err
+float32 angle_err
+---
+string success_code
+geometry_msgs/PoseStamped valve

@@ -1,0 +1,41 @@
+Background\ ColorB=0.827451
+Background\ ColorG=0.8
+Background\ ColorR=0.698039
+Camera\ Config=0.00479824 3.17122 9.08357 4.50416 -0.268327 -0.0181922
+Camera\ Type=rviz::OrbitViewController
+Camera.Enabled=1
+Camera.Image\ Rendering=background & overlay
+Camera.Image\ Topic=/r_forearm_cam/image_mono
+Camera.Overlay\ Alpha=0.5
+Camera.Queue\ Size=2
+Camera.Transport\ Hint=raw
+Camera.Zoom\ Factor=1
+Camera2.Enabled=1
+Camera2.Image\ Rendering=background & overlay
+Camera2.Image\ Topic=/l_forearm_cam/image_mono
+Camera2.Overlay\ Alpha=0.5
+Camera2.Queue\ Size=2
+Camera2.Transport\ Hint=raw
+Camera2.Zoom\ Factor=1
+Fixed\ Frame=/base_link
+Property\ Grid\ Splitter=320,78
+Property\ Grid\ State=expanded=.Global Options,Camera.Enabled,Camera2.Enabled;splitterratio=0.5
+QMainWindow=000000ff00000000fd0000000300000000000003c80000036efc0200000001fc0000001d0000036e0000010c0100001dfa000000000100000002fb0000000e00430061006d00650072006100320100000000ffffffff0000004f00fffffffb000000100044006900730070006c0061007900730100000000000003220000011d00ffffff00000001000003ac0000036efc0200000005fb0000000c00430061006d006500720061010000001d0000036e0000001900fffffffb0000000c00540065006c0065006f0070000000001d000003c50000004c00fffffffb0000001e0054006f006f006c002000500072006f0070006500720074006900650073000000001d000001170000006700fffffffb0000000a00560069006500770073000000001d000002b5000000bb00fffffffb0000001200530065006c0065006300740069006f006e000000001d000004370000006700ffffff00000003000007800000008ffc0100000001fb0000000800540069006d0065010000000000000780000002bf00ffffff000000000000036e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+Target\ Frame=/base_link
+Tool\ 2D\ Nav\ GoalTopic=/move_base_simple/goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+[Display0]
+ClassName=rviz::CameraDisplay
+Name=Camera
+[Display1]
+ClassName=rviz::CameraDisplay
+Name=Camera2
+[Panel0]
+ClassLookupName=rviz_plugin_tutorials/Teleop
+Name=Teleop
+Topic=
+[Window]
+Height=1056
+Width=1920
+X=1440
+Y=360

@@ -1,0 +1,13 @@
+<launch>
+
+  <include file="$(find sensor_pkg)/launch/pr2_simulation.launch" />
+
+  <node name="pointcloud_client" pkg="gui" type="pointcloud_client" output="screen"/>
+  <node name="pointcloud_server" pkg="gui" type="pointcloud_server" output="screen"/>
+
+  <node name="valve_interact" pkg="gui" type="valve_interact" output="screen"/>
+	<node name="valve_icp" pkg="gui" type="valve_icp" output="screen"/>
+
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find gui)/rviz/valve_alignment.vcg" />
+
+</launch>

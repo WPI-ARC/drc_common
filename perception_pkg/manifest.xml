@@ -1,0 +1,19 @@
+<package>
+  <description brief="perception_pkg">
+
+     perception_pkg
+
+  </description>
+  <author>Bener Suay</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes="Perception package subscribes to several messages coming from the sensor_pkg, interprets the raw data and converts it to a higher level information (e.g. state vector) that the GUI and pose predictor can use."/>
+  <url>http://ros.org/wiki/perception_pkg</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="visualization_msgs"/>
+
+</package>
+
+

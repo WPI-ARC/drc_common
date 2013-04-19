@@ -1,0 +1,8 @@
+<launch>
+
+  <node name="proximity" pkg="gui" type="proximity" output="screen"/>
+  <node name="proximity_test" pkg="gui" type="proximity_test" />
+
+  <node name="tacta_wrist" pkg="feedback_devices" type="tacta_wrist" />
+
+</launch>

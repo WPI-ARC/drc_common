@@ -1,0 +1,32 @@
+<package>
+  <description brief="gui">
+
+     gui
+
+  </description>
+  <author>fire</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gui</url>
+  
+  <depend package="sensor_pkg" />
+  <depend package="razer_hydra" />  
+
+	<depend package="tf"/>
+  <depend package="roscpp"/>
+	<depend package="resource_retriever" />
+	<depend package="interactive_markers"/>
+
+  <depend package="pcl"/>
+  <depend package="pcl_ros"/>
+
+  <depend package="std_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="sensor_msgs"/>
+	<depend package="geometry_msgs"/>
+
+  <rosdep name="eigen" />
+
+</package>
+
+
