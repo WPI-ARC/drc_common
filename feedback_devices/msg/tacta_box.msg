@@ -12,8 +12,12 @@ uint8 AMP_MED=127
 uint8 AMP_STRONG=190
 uint8 AMP_FULL=255
 
+uint8 INACTIVE=0
+uint8 ACTIVE=1
+
 Header header
 
+uint8[16] active
 uint8[16] freq
 uint8[16] amp_max
 uint8[16] amp_min

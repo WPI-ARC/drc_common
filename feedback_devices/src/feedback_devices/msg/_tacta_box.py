@@ -7,7 +7,7 @@ import struct
 import std_msgs.msg
 
 class tacta_box(genpy.Message):
-  _md5sum = "31fe4e8b1709e8bb740af3ebb4ff46e9"
+  _md5sum = "ebbee57de72c42873b6e95e495e7ccbe"
   _type = "feedback_devices/tacta_box"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """uint8 FREQ_ON=255
@@ -24,8 +24,12 @@ uint8 AMP_MED=127
 uint8 AMP_STRONG=190
 uint8 AMP_FULL=255
 
+uint8 INACTIVE=0
+uint8 ACTIVE=1
+
 Header header
 
+uint8[16] active
 uint8[16] freq
 uint8[16] amp_max
 uint8[16] amp_min
@@ -62,9 +66,11 @@ string frame_id
   AMP_MED = 127
   AMP_STRONG = 190
   AMP_FULL = 255
+  INACTIVE = 0
+  ACTIVE = 1
 
-  __slots__ = ['header','freq','amp_max','amp_min']
-  _slot_types = ['std_msgs/Header','uint8[16]','uint8[16]','uint8[16]']
+  __slots__ = ['header','active','freq','amp_max','amp_min']
+  _slot_types = ['std_msgs/Header','uint8[16]','uint8[16]','uint8[16]','uint8[16]']
 
   def __init__(self, *args, **kwds):
     """
@@ -74,7 +80,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,freq,amp_max,amp_min
+       header,active,freq,amp_max,amp_min
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -85,6 +91,8 @@ string frame_id
       #message fields cannot be None, assign default values for those that are
       if self.header is None:
         self.header = std_msgs.msg.Header()
+      if self.active is None:
+        self.active = chr(0)*16
       if self.freq is None:
         self.freq = chr(0)*16
       if self.amp_max is None:
@@ -93,6 +101,7 @@ string frame_id
         self.amp_min = chr(0)*16
     else:
       self.header = std_msgs.msg.Header()
+      self.active = chr(0)*16
       self.freq = chr(0)*16
       self.amp_max = chr(0)*16
       self.amp_min = chr(0)*16
@@ -117,6 +126,12 @@ string frame_id
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self.active
+      # - if encoded as a list instead, serialize as bytes instead of string
+      if type(_x) in [list, tuple]:
+        buff.write(_struct_16B.pack(*_x))
+      else:
+        buff.write(_struct_16s.pack(_x))
       _x = self.freq
       # - if encoded as a list instead, serialize as bytes instead of string
       if type(_x) in [list, tuple]:
@@ -162,6 +177,9 @@ string frame_id
         self.header.frame_id = str[start:end]
       start = end
       end += 16
+      self.active = str[start:end]
+      start = end
+      end += 16
       self.freq = str[start:end]
       start = end
       end += 16
@@ -189,6 +207,12 @@ string frame_id
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self.active
+      # - if encoded as a list instead, serialize as bytes instead of string
+      if type(_x) in [list, tuple]:
+        buff.write(_struct_16B.pack(*_x))
+      else:
+        buff.write(_struct_16s.pack(_x))
       _x = self.freq
       # - if encoded as a list instead, serialize as bytes instead of string
       if type(_x) in [list, tuple]:
@@ -233,6 +257,9 @@ string frame_id
         self.header.frame_id = str[start:end].decode('utf-8')
       else:
         self.header.frame_id = str[start:end]
+      start = end
+      end += 16
+      self.active = str[start:end]
       start = end
       end += 16
       self.freq = str[start:end]
