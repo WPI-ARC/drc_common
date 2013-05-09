@@ -33,7 +33,7 @@ Trial_Latin_Squares = [...
 
 %% Setup for the Current Run
 
-% Get the participant number from the person running the study
+%Get the participant number from the person running the study
 Participant_Number = input('Please Enter The Participant Number:');
 disp(' ');
 
@@ -48,6 +48,13 @@ Cond_Number = mod(Participant_Number, 6);
 
 % Make sure to check the bounds since MATLAB indexes from 1 not 0
 if Cond_Number == 0, Cond_Number = 6; end;
+
+%% Explaination
+
+disp('====> Show them the intro sheet and wait for them to be done');
+disp(' ');
+
+pause();
 
 %% The actual Running of the Conditions
 
@@ -65,91 +72,105 @@ for c = 1:6,
     Current_Condition = Condition_Latin_Squares(Cond_Number, c);
     str = strcat('$ roslaunch feedback_devices Condition_', num2str(Current_Condition),'.launch');
     disp(str);
-    disp('Press ENTER When Running');
     disp(' ');
     pause();
+    
+    disp('Please run the No-Slip demo now');
+    disp(' ');
+    pause();
+    
+    disp('Please run the Slipping demo now');
+    disp(' ');
+    pause();
+    
+    disp(' ');
     
     
     % Run through each trial
     for t = 1:8,
         
+%         disp('    ===> Run the correct feedback node.');
+%         pause();
+        
         %Have the person running the study start playing the correct trial
-        disp('    Please Run: ');
         Current_Trial = Trial_Latin_Squares(c, t);
         str = strcat('    $ rosbag play trial_', num2str(Current_Trial), '.bag');
         disp(str);
         pause();
-        disp(' ');
        
         
         
         
         
         
-        % Ask if the user thought the robot slipped
-        loop = true;
-        while(loop),
-            % Ask the User the appropriate questions
-            Slip_Q = input('        Do you think the robot slipped? (Y / N) :', 's');
-            
-            if Slip_Q == 'Y', loop = false; Slip_Val = 1;
-            elseif Slip_Q == 'N', loop = false; Slip_Val = 0;
-            elseif Slip_Q == 'y', loop = false; Slip_Val = 1;
-            elseif Slip_Q == 'n', loop = false; Slip_Val = 0;
-            else
-                disp('        Please Enter a Valid Response either "Y" or "N"');
-            end
-            
-        end
-        
-        
-        % Ask which hand they think slipped
-        if Slip_Val == 1,
-            loop = true;
-            while(loop),
-                % Ask the User the appropriate questions
-                Hand_Q = input('        Which hand do you think slipped? (B / R / L) :', 's');
-
-                if Hand_Q == 'B', loop = false; Hand_Val = 3;
-                elseif Hand_Q == 'R', loop = false; Hand_Val = 1;
-                elseif Hand_Q == 'L', loop = false; Hand_Val = 2;
-                elseif Hand_Q == 'b', loop = false; Hand_Val = 3;
-                elseif Hand_Q == 'r', loop = false; Hand_Val = 1;
-                elseif Hand_Q == 'l', loop = false; Hand_Val = 2;
-                else
-                    disp('        Please Enter a Valid Response either "B", "R" or "L"');
-                end
-            end
-        else 
-            Hand_Val = 0;
-        end
-        
-        
-        % Ask how confident the user is in their decision
-        loop = true;
-        while(loop),
-            % Ask the User the appropriate questions
-            Conf_Q = input('        How condident are you in your decision? (1 - 7) : ', 's');
-
-            if Conf_Q == '1', loop = false; Conf_Val = 1;
-            elseif Conf_Q == '2', loop = false; Conf_Val = 2;
-            elseif Conf_Q == '3', loop = false; Conf_Val = 3;
-            elseif Conf_Q == '4', loop = false; Conf_Val = 4;
-            elseif Conf_Q == '5', loop = false; Conf_Val = 5;
-            elseif Conf_Q == '6', loop = false; Conf_Val = 6;
-            elseif Conf_Q == '7', loop = false; Conf_Val = 7;
-            else
-                disp('        Please Enter a Valid Number Between 1 and 7');
-            end
-        end
-        
-        % Store the data
-        fprintf(fid, '%i,%i,%i,%i,%i,%i\n', Participant_Number, Current_Condition, Current_Trial, Slip_Val, Hand_Val, Conf_Val);
-        
-        disp(' ');
+%         % Ask if the user thought the robot slipped
+%         loop = true;
+%         while(loop),
+%             % Ask the User the appropriate questions
+%             Slip_Q = input('        Do you think the robot slipped? (Y / N) :', 's');
+%             
+%             if Slip_Q == 'Y', loop = false; Slip_Val = 1;
+%             elseif Slip_Q == 'N', loop = false; Slip_Val = 0;
+%             elseif Slip_Q == 'y', loop = false; Slip_Val = 1;
+%             elseif Slip_Q == 'n', loop = false; Slip_Val = 0;
+%             else
+%                 disp('        Please Enter a Valid Response either "Y" or "N"');
+%             end
+%             
+%         end
+%         
+%         
+%         % Ask which hand they think slipped
+%         if Slip_Val == 1,
+%             loop = true;
+%             while(loop),
+%                 % Ask the User the appropriate questions
+%                 Hand_Q = input('        Which hand do you think slipped? (B / R / L) :', 's');
+% 
+%                 if Hand_Q == 'B', loop = false; Hand_Val = 3;
+%                 elseif Hand_Q == 'R', loop = false; Hand_Val = 1;
+%                 elseif Hand_Q == 'L', loop = false; Hand_Val = 2;
+%                 elseif Hand_Q == 'b', loop = false; Hand_Val = 3;
+%                 elseif Hand_Q == 'r', loop = false; Hand_Val = 1;
+%                 elseif Hand_Q == 'l', loop = false; Hand_Val = 2;
+%                 else
+%                     disp('        Please Enter a Valid Response either "B", "R" or "L"');
+%                 end
+%             end
+%         else 
+%             Hand_Val = 0;
+%         end
+%         
+%         
+%         % Ask how confident the user is in their decision
+%         loop = true;
+%         while(loop),
+%             % Ask the User the appropriate questions
+%             Conf_Q = input('        How condident are you in your decision? (1 - 7) : ', 's');
+% 
+%             if Conf_Q == '1', loop = false; Conf_Val = 1;
+%             elseif Conf_Q == '2', loop = false; Conf_Val = 2;
+%             elseif Conf_Q == '3', loop = false; Conf_Val = 3;
+%             elseif Conf_Q == '4', loop = false; Conf_Val = 4;
+%             elseif Conf_Q == '5', loop = false; Conf_Val = 5;
+%             elseif Conf_Q == '6', loop = false; Conf_Val = 6;
+%             elseif Conf_Q == '7', loop = false; Conf_Val = 7;
+%             else
+%                 disp('        Please Enter a Valid Number Between 1 and 7');
+%             end
+%         end
+%         
+%         % Store the data
+%         fprintf(fid, '%i,%i,%i,%i,%i,%i\n', Participant_Number, Current_Condition, Current_Trial, Slip_Val, Hand_Val, Conf_Val);
+%         
+%         disp(' ');
         
     end
     
+    disp('If you would like, we can take a short break now.');
+    disp(' ');
+    pause();
+    
 end
 
-fclose(fid);
+% fclose(fid);

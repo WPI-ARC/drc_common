@@ -29,13 +29,16 @@ rosbuild_genmsg()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-rosbuild_add_executable(tacta_test src/test.cpp)
+rosbuild_add_executable(tacta_box src/tacta_box.cpp)
+rosbuild_add_executable(tacta_hydra src/tacta_hydra.cpp)
 
-rosbuild_add_executable(tacta_belt src/tacta_belt.cpp)
-rosbuild_add_executable(tacta_wrist src/tacta_wrist.cpp)
-rosbuild_add_executable(tacta_grippers src/tacta_grippers.cpp)
+#rosbuild_add_executable(tacta_belt src/tacta_belt.cpp)
+#rosbuild_add_executable(tacta_wrist src/tacta_wrist.cpp)
+#rosbuild_add_executable(tacta_grippers src/tacta_grippers.cpp)
 
-rosbuild_add_executable(pr2_gripper_feedback_analog src/pr2_gripper_feedback_analog.cpp)
-rosbuild_add_executable(pr2_gripper_feedback_binned src/pr2_gripper_feedback_binned.cpp)
+#rosbuild_add_executable(pr2_gripper_feedback_analog src/pr2_gripper_feedback_analog.cpp)
+#rosbuild_add_executable(pr2_gripper_feedback_binned src/pr2_gripper_feedback_binned.cpp)
 
-target_link_libraries(tacta_belt cereal_port)
+rosbuild_add_executable(pr2_gripper_feedback_humanoids src/pr2_gripper_feedback_humanoids.cpp)
+
+target_link_libraries(tacta_box cereal_port)
