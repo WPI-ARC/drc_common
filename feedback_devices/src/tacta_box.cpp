@@ -30,8 +30,6 @@ char data_freq[6];
 //Callback for use with the belts msg
 void box_cb (feedback_devices::tacta_box box){
 
-    int pos = 0;
-
     for (int channel = 0; channel < CHANNELS; channel++){
 
         if (box.active[channel] == feedback_devices::tacta_box::ACTIVE) {
@@ -39,7 +37,10 @@ void box_cb (feedback_devices::tacta_box box){
             active[channel] = feedback_devices::tacta_box::ACTIVE;
 
             if (box.freq[channel] > 0 && box.freq[channel] < 255){
+
                 int uptime = (int)(100 / (box.freq[channel] * 2));
+
+                int pos = 0;
 
                 //Create the matrix for the rh_rf
                 for (int i = 1; i <= box.freq[channel]; i++){
@@ -53,11 +54,13 @@ void box_cb (feedback_devices::tacta_box box){
                 }
 
             } else if (box.freq[channel] == feedback_devices::tacta_box::FREQ_ON) {
+
                 for (int j = 0; j < 100; j++){
                     output[channel][j] = box.amp_max[channel];
                 }
 
             } else if (box.freq[channel] == feedback_devices::tacta_box::FREQ_OFF) {
+
                 for (int j = 0; j < 100; j++){
                     output[channel][j] = 0;
                 }

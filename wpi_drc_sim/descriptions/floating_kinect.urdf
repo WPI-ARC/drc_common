@@ -5,7 +5,7 @@
        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        >
   <!-- LINKS -->
-  <link name="sensor_base_link">
+  <link name="kinect_sim_link">
     <visual>
       <geometry>
         <box size="0.005 0.005 0.05"/>
@@ -49,7 +49,7 @@
     </collision>
   </link>
 
-  <link name="camera_depth_frame">
+  <link name="kinect_depth_frame">
     <inertial>
       <mass value="0.01"/>
       <origin xyz="0 0 0"/>
@@ -57,7 +57,7 @@
     </inertial>
   </link>
 
-  <link name="camera_depth_optical_frame">
+  <link name="kinect_depth_optical_frame">
     <inertial>
       <mass value="0.001"/>
       <origin xyz="0 0 0"/>
@@ -65,7 +65,7 @@
     </inertial>
   </link>
 
-  <link name="camera_rgb_frame">
+  <link name="kinect_rgb_frame">
     <inertial>
       <mass value="0.001"/>
       <origin xyz="0 0 0"/>
@@ -73,7 +73,7 @@
     </inertial>
   </link>
 
-  <link name="camera_rgb_optical_frame">
+  <link name="kinect_rgb_optical_frame">
     <inertial>
       <mass value="0.001"/>
       <origin xyz="0 0 0"/>
@@ -84,34 +84,34 @@
   <!-- JOINTS -->
 
   <joint name="kinect_to_base" type="fixed">
-    <parent link="sensor_base_link"/>
+    <parent link="kinect_sim_link"/>
     <child link="kinect_link"/>
     <!--origin xyz="0.031 0.0 0.053"/-->
     <origin xyz="0.031 0.0 0.103"/>
   </joint>
 
-  <joint name="camera_depth_joint" type="fixed">
+  <joint name="kinect_depth_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0.018 0"/>
     <parent link="kinect_link"/>
-    <child link="camera_depth_frame"/>
+    <child link="kinect_depth_frame"/>
   </joint>
 
-  <joint name="camera_depth_optical_joint" type="fixed">
+  <joint name="kinect_depth_optical_joint" type="fixed">
     <origin rpy="-1.570795 0 -1.570795" xyz="0 0 0"/>
-    <parent link="camera_depth_frame"/>
-    <child link="camera_depth_optical_frame"/>
+    <parent link="kinect_depth_frame"/>
+    <child link="kinect_depth_optical_frame"/>
   </joint>
 
-  <joint name="camera_rgb_joint" type="fixed">
+  <joint name="kinect_rgb_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 -0.005 0"/>
     <parent link="kinect_link"/>
-    <child link="camera_rgb_frame"/>
+    <child link="kinect_rgb_frame"/>
   </joint>
 
-  <joint name="camera_rgb_optical_joint" type="fixed">
+  <joint name="kinect_rgb_optical_joint" type="fixed">
     <origin rpy="-1.570795 0 -1.570795" xyz="0 0 0"/>
-    <parent link="camera_rgb_frame"/>
-    <child link="camera_rgb_optical_frame"/>
+    <parent link="kinect_rgb_frame"/>
+    <child link="kinect_rgb_optical_frame"/>
   </joint>
 
   <!-- GAZEBO STUFF -->
@@ -119,7 +119,7 @@
     <turnGravityOff>true</turnGravityOff>
     <static>true</static>
   </gazebo>
-  <gazebo reference="sensor_base_link">
+  <gazebo reference="kinect_sim_link">
     <material>Gazebo/Red</material>
   </gazebo>
   <gazebo reference="kinect_link">
