@@ -44,11 +44,11 @@ class Generic_TF_Broadcaster:
             rospy.loginfo("Publishing Transform ... ")
             t = rospy.Time.now()
             self.broadcaster.sendTransform((self.tx, self.ty, self.tz), (self.rx, self.ry, self.rz, self.rw), t, self.target_frame, self.root_frame)
-            self.broadcaster.sendTransform((0.031, 0, 0.103), (0, 0, 0, 1), t, "/kinect_link", self.target_frame)
+            self.broadcaster.sendTransform((0.031, 0, 0.103), (0, .38268343, 0, .92387953), t, "/kinect_link", self.target_frame)
             self.broadcaster.sendTransform((0, 0.018, 0), (0, 0, 0, 1), t, "/kinect_depth_frame", "/kinect_link")
-            self.broadcaster.sendTransform((0, 0, 0), (-0.013706055221903412, 0.013706055221903412, 0.0001878912528687704, 0.9998121087471312), t, "/kinect_depth_optical_frame", "/kinect_depth_frame")
+            self.broadcaster.sendTransform((0, 0, 0), (-.5, .5, -.5, .5), t, "/kinect_depth_optical_frame", "/kinect_depth_frame")
             self.broadcaster.sendTransform((0, -.005, 0), (0, 0, 0, 1), t, "/kinect_rgb_frame", "/kinect_link")
-            self.broadcaster.sendTransform((0, 0, 0), (-0.013706055221903412, 0.013706055221903412, 0.0001878912528687704, 0.9998121087471312), t, "/kinect_rgb_optical_frame", "/kinect_rgb_frame")
+            self.broadcaster.sendTransform((0, 0, 0), (-.5, .5, -.5, .5), t, "/kinect_rgb_optical_frame", "/kinect_rgb_frame")
             rate.sleep()
 
 def load_params():

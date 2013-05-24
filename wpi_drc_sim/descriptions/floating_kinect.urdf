@@ -87,7 +87,7 @@
     <parent link="kinect_sim_link"/>
     <child link="kinect_link"/>
     <!--origin xyz="0.031 0.0 0.053"/-->
-    <origin xyz="0.031 0.0 0.103"/>
+    <origin rpy="0 0.78539816 0" xyz="0.031 0.0 0.103"/>
   </joint>
 
   <joint name="kinect_depth_joint" type="fixed">
@@ -97,7 +97,7 @@
   </joint>
 
   <joint name="kinect_depth_optical_joint" type="fixed">
-    <origin rpy="-1.570795 0 -1.570795" xyz="0 0 0"/>
+    <origin rpy="-1.20919958 1.20919958 -1.20919958" xyz="0 0 0"/>
     <parent link="kinect_depth_frame"/>
     <child link="kinect_depth_optical_frame"/>
   </joint>
@@ -109,7 +109,7 @@
   </joint>
 
   <joint name="kinect_rgb_optical_joint" type="fixed">
-    <origin rpy="-1.570795 0 -1.570795" xyz="0 0 0"/>
+    <origin rpy="-1.20919958 1.20919958 -1.20919958" xyz="0 0 0"/>
     <parent link="kinect_rgb_frame"/>
     <child link="kinect_rgb_optical_frame"/>
   </joint>
