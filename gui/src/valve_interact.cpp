@@ -675,7 +675,7 @@ void makeValve(geometry_msgs::Pose newPose){
   marker.color.a = 1.0;
 
   InteractiveMarker int_marker;
-  int_marker.header.frame_id = "/torso_lift_link";
+  int_marker.header.frame_id = "/Body_RAR";
   int_marker.name = "valve";
   int_marker.description = "Align the Valve!";
   int_marker.pose.position.x = newPose.position.x;

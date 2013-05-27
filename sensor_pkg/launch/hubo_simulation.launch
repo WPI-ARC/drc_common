@@ -1,0 +1,26 @@
+<launch>
+  
+  <!-- POINTCLOUD PARAMETERS AND NODES -->
+  <param name="pointcloud_topic" value="/camera/depth/points" />
+  <param name="pointcloud_frame" value="/kinect_depth_optical_frame" />
+  <param name="target_frame" value="/Body_RAR" />
+ 	<node name="pointcloud" pkg="sensor_pkg" type="pointcloud" /> 
+
+
+
+  
+  <!-- SUBSCRIBE TO UPTO 8 TOPICS IN ORDER TO CREATE THE ROBOT'S STATE -->
+  <!-- UNCOMMENT AND src/robot_state.cpp WILL AUTOMATICALLY GENERATE -->
+  <!-- SUBSCRIBERS TO THE TOPICS -->
+  
+  <param name="robot_state_topic_1" value="/tilt_scan" />
+  <!-- param name="robot_state_topic_2" valuve="/scan" -->
+  <!-- param name="robot_state_topic_3" valuve="/scan" -->
+  <!-- param name="robot_state_topic_4" valuve="/scan" -->
+  <!-- param name="robot_state_topic_5" valuve="/scan" -->
+  <!-- param name="robot_state_topic_6" valuve="/scan" -->
+  <!-- param name="robot_state_topic_7" valuve="/scan" -->
+  <!-- param name="robot_state_topic_8" valuve="/scan" -->
+	<node name="robot_state" pkg="sensor_pkg" type="robot_state" output="screen"/>
+
+</launch>

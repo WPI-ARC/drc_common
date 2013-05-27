@@ -472,6 +472,8 @@ void run_crush_test(void) {
 
                         //Move the gripper based off of where
                         gripper_command.position = gripper[hand] - gripper_d;
+                        if (gripper_command.position < 0) gripper_command.position = 0;
+                        if (gripper_command.position > .08) gripper_command.position = .08;
 
                         ROS_INFO("CRUSHING(fine) with Force = %4.2f / %4.2f, Commanding: %4.4f w/ %4.4f", force[hand], currentForce, gripper_command.position, gripper_d);
 
@@ -494,6 +496,8 @@ void run_crush_test(void) {
 
                     //Move the gripper based off of where
                     gripper_command.position = gripper[hand] - gripper_d;
+                    if (gripper_command.position < 0) gripper_command.position = 0;
+                    if (gripper_command.position > .08) gripper_command.position = .08;
 
                     ROS_INFO("CRUSHING with Force = %4.2f / %4.2f, Commanding: %4.4f w/ %4.4f", force[hand], currentForce, gripper_command.position, gripper_d);
 
@@ -535,8 +539,9 @@ void r_button_press (std_msgs::Int16 input){
     else if (input.data == BUTTON_START) currentForce += force_d;
     else if (input.data == BUTTON_STICK){
 
-        auto_state[RIGHT_HAND] = AUTO_CLOSE;
+        ROS_INFO("Current Force: %4.2f", force[RIGHT_HAND]);
 
+        //auto_state[RIGHT_HAND] = AUTO_CLOSE;
         //start_force_servo();
 
     }
