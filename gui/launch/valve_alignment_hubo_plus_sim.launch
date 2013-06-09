@@ -7,6 +7,6 @@
   <node name="pointcloud_server" pkg="gui" type="pointcloud_server" output="screen"/>
 
   <node name="valve_interact" pkg="gui" type="valve_interact" output="screen"/>
-	<node name="valve_icp" pkg="gui" type="valve_icp" output="screen"/>
+  <node name="valve_icp" pkg="gui" type="valve_icp" output="screen"/>
 
 </launch>
