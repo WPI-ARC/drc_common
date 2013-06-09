@@ -35,7 +35,7 @@
           <offsetfrom>pole</offsetfrom>
           <weight>1</weight>
           <limitsdeg>-180 180</limitsdeg>
-	  <axis>0 -0.3907 0.9205</axis>
+	      <axis>0 -0.3907 0.9205</axis>
           <maxvel>1</maxvel>
           <resolution>1</resolution>
         </Joint>
