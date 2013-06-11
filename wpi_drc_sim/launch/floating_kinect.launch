@@ -17,10 +17,10 @@
   </group>
 
   <!-- Spawn the table -->  
-  <node name="spawn_table" pkg="gazebo" type="spawn_model" args="-urdf -file $(find wpi_drc_sim)/descriptions/table.urdf -x 0 -z -.25 -model table" respawn="false" output="screen" /> 
+  <node name="spawn_table" pkg="gazebo" type="spawn_model" args="-urdf -file $(find wpi_drc_sim)/descriptions/table.urdf -x -0.2 -z -.15 -model table" respawn="false" output="screen" /> 
  
   <!-- Spawn the racing wheel. Here we use the argument '-wait table', without it sometimes the racing wheel gets spawned faster than the table, and then it falls on the ground because of the gravity --> 
-  <node name="spawn_driving_wheel" pkg="gazebo" type="spawn_model" args="-urdf -file $(find wpi_drc_sim)/descriptions/driving_wheel_full.urdf -x .41 -z .75 -Y 3.14159265359 -model wheel -wait table" respawn="false" output="screen" />
+  <node name="spawn_driving_wheel" pkg="gazebo" type="spawn_model" args="-urdf -file $(find wpi_drc_sim)/descriptions/driving_wheel_full.urdf -x .21 -z .85 -y 0.09 -Y 3.14159265359 -model wheel -wait table" respawn="false" output="screen" />
 
   <!-- Spawhn the floating kinect -->
   <node name="spawn_floating_kinect" pkg="gazebo" type="spawn_model" args="-urdf -file $(find wpi_drc_sim)/descriptions/floating_kinect.urdf -model floating_kinect" respawn="false" output="screen" />
