@@ -1,5 +1,7 @@
 <launch>
 
+  <param name="/use_sim_time" value="true" />
+
   <include file="$(find hubo_wpi_sim)/launch/hubo_plus_sim.launch" />
   <include file="$(find sensor_pkg)/launch/hubo_simulation.launch" />
 
